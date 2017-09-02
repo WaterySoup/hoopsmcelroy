@@ -6,6 +6,7 @@
   "scripts": {
     "create": "node create.js",
     "generate": "node generate.js",
+    "generate:watch": "node generate-watch.js",
     "generate:all": "node generate-all.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -18,6 +19,7 @@
     "ejs": "^2.5.7",
     "juice": "^4.1.1",
     "mime-types": "^2.1.16",
-    "node-sass": "^4.5.3"
+    "node-sass": "^4.5.3",
+    "watch": "^1.0.2"
   }
 }

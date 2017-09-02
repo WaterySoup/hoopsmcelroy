@@ -14,6 +14,12 @@ var generate = Generate.prototype;
 function Generate(template, profile) {
 	this.template = template;
 	this.profile = profile;
+	var logString = 'Generating ' + template;
+	if (profile) {
+		logString += ' for ' + profile;
+	}
+	logString += '...';
+	console.info(logString);
 	this.srcDir = path.join(__dirname, 'src', this.template);
 	this.distDir = path.join(__dirname, 'dist', this.template);
 	this.viewDir = path.join(this.distDir, 'view');
@@ -44,23 +50,24 @@ generate.compileSass = function() {
 		file: path.join(this.srcDir, 'scss', 'main.scss')
 	}, function(error, result) {
 		if (!error) {
-			this.convertToInlineCss(result.css);
+			this.prepareTemplate(result.css);
+		} else {
+			console.info(error);
 		}
 	}.bind(this));
 };
 
-// Convert generated CSS to inline styles
-generate.convertToInlineCss = function(css) {
+// Prepare template for profile generation
+generate.prepareTemplate = function(css) {
 	var srcTemplate = fs.readFileSync(path.join(this.srcDir, 'index.html'), 'utf8');
-	srcTemplate = '<style>' + css + '</style>' + srcTemplate;
-	var html = juice(srcTemplate); 
+	var html = '<style>' + css + '</style>' + srcTemplate;
 
 	var profiles = fs.readdirSync(this.profilesDir);
 
 	var size = profiles.length;
 
 	if (this.profile) {
-		this.generateProfile(this.profile);
+		this.generateProfile(this.profile + '.json', html);
 	} else {
 		for (var i = 0; i < size; i++) {
 			if (mime.lookup(profiles[i]) === 'application/json') {
@@ -70,16 +77,19 @@ generate.convertToInlineCss = function(css) {
 	}
 };
 
-// Generate a profile with html with inline styles
+// Generate a profile with html with inline styles and convert CSS to inline styles.
 generate.generateProfile = function(profileData, html) {
 	var profileNameParts = profileData.split('.json');
 	var profileName = profileNameParts[profileNameParts.length - 2];
-	var profile = require(path.join(this.profilesDir, profileData));
+	// Require doesn't work well with watch as it uses the original JSON files for the entire time the script is live and doesn't detect changes to the required file.
+	var profile = JSON.parse(fs.readFileSync(path.join(this.profilesDir, profileData), 'utf8'));
 	var generatedHtml = ejs.render(html, profile);
+	// Unfortunately, some classes may not actually be available until after the HTML templates have bee processed with EJS, so we delay converting CSS until the end.
+	convertedHtml = juice(generatedHtml);
 
-	fs.writeFileSync(path.join(this.distDir, profileName + '.html'), generatedHtml);
+	fs.writeFileSync(path.join(this.distDir, profileName + '.html'), convertedHtml);
 	// Put generated HTML into a view.
-	var viewHtml = ejs.render(defaultTpl, {html: generatedHtml});
+	var viewHtml = ejs.render(defaultTpl, {html: convertedHtml});
 	fs.writeFile(path.join(this.viewDir, profileName + '.html'), viewHtml, this.done.bind(this, profileName));
 };
 
