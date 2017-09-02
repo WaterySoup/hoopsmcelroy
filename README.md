@@ -18,14 +18,15 @@ Manages character profile content for HTML users
 
 # Creating Templates
 - Run `npm run create {template}` where {template} is the name of the template you want to create.
-- Folders for your template will be created in `src` and `profiles`. All the work you do to create and edit your template will go in there. 
+- Folders for your template will be created in `src` and `profiles`. All the work you do to create and edit your template will go in `src`. Your profiles go in `profiles`. 
 
 # Managing Profiles
 - Each profile belongs to a template, and an HTML template will be generated for every profile you create.
-- Profiles are .json files. You can give them pretty much any name you want. You can choose to just dump everything in one variable or choose to have an object for stats that you can feed to EJS, which will generate a dynamic HTML template for you.
+- Profiles are .json files. You can give them pretty much any name you want. You can choose to just dump everything in one variable or choose to have an object for stats that you can feed to [EJS](http://ejs.co), which will generate a dynamic HTML template for you.
 
 # Template Generation and Preview
 - Once you have finished editing your template and providing one or more profiles, run `npm run generate {template}`.
+- If you only need to generate the template for one profile, then run `npm run generate {template} {profile}` instead.
 - This will generate the HTML template for all the profiles belonging to that template by compiling your SASS stylesheets into plain CSS, and then converting those styles into inline style attributes and filling in all the data from your profiles.
 - Generated files are found under `dist/{template}`.
 - A local preview is also generated for your profiles to check that everything looks relatively okay before you paste it into Toyhou.se. You can find the preview in the `view` folder of the generated template folder.
