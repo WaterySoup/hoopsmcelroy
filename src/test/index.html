@@ -1,0 +1,29 @@
+<div class="profile bg-visual">
+<div class="card panel">
+  <div class="panel-header">
+   Info
+  </div>
+  <table>
+    <tbody>
+			<% var infoOrder = [{'id': 'age', 'name': 'Age'}, {'id': 'gender', 'name': 'Gender'}, {'id': 'height', 'name': 'Height'}, {'id': 'weight', 'name': 'Weight'}, {'id': 'birthday', 'name': 'Birthday'}, {'id': 'species', 'name': 'Species'}, {'id': 'occupation', 'name': 'Occupation'}, {'id': 'nationality', 'name': 'Nationality'}, {'id': 'languages', 'name': 'Languages'}, {'id': 'voice', 'name': 'Voice Type'}, {'id': 'orientation', 'name': 'Orientation'}, {'id': 'relationship', 'name': 'Relationship Status'}]; %>
+		<% for (var i = 0; i < infoOrder.length; i++) { %>
+      <tr>
+        <td>
+					<span><span><strong><%- infoOrder[i].name %></strong><br></span></span>
+        </td>
+        <td>
+					<span><span><%- info[infoOrder[i].id] %><br></span></span>
+        </td>
+      </tr>
+			<% } %>
+		</tbody>
+  </table>
+</div>
+<div class="card panel">
+  <div class="panel-header">
+   Overview
+  </div>
+	<%- overview %>
+</div>
+<p><span><br></span></p><table><thead><tr><th><span><span>Appearance Notes</span><br></span></th></tr></thead><tbody><tr><td><span><span><%- appearance %></span><br></span></td></tr></tbody></table>
+</div>

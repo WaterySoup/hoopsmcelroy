@@ -1,0 +1,23 @@
+{
+  "name": "th-html-manager",
+  "version": "1.0.0",
+  "description": "Manages toyhou.se HTML character profiles by automating the styling process.",
+  "main": "generate.js",
+  "scripts": {
+    "create": "node create.js",
+    "generate": "node generate.js",
+    "generate:all": "node generate-all.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "toyhou.se"
+  ],
+  "author": "",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "juice": "^4.1.1",
+    "mime-types": "^2.1.16",
+    "node-sass": "^4.5.3"
+  }
+}
