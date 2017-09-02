@@ -1,0 +1,111 @@
+@import 'base/variables';
+
+.bg-visual {
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-position: center;
+}
+
+.profile {
+	font-family: book antiqua, palatino;
+	padding: 20px 0;
+}
+
+.panel {
+	margin: 20px;
+	background-color: transparent;
+	color: $white;
+	background: url(#{$panel-bg});
+	padding: 0;
+}
+
+.panel-header {
+	height: $panel-header-height;
+	line-height: $panel-header-height;
+	padding: 0 10px;
+	font-weight: bold;
+	background: url(#{$panel-bg});
+}
+
+.panel-content {
+	padding: 10px 20px;
+}
+
+table {
+	border: 0;
+	margin: 10px;
+}
+
+hr {
+	border: 0;
+	height: 1px;
+	width: 100%;
+	background-color: $white;
+	margin: 0;
+}
+
+ul {
+	padding-left: 10px;
+	margin-bottom: -10px;
+	li {
+		margin-bottom: 10px;
+	}
+}
+
+.info, .overview {
+	margin-top: 0;
+}
+
+.overview {
+	margin-left: 10px;
+}
+
+.info {
+	margin-right: 10px;
+}
+
+.skill-title {
+	font-weight: bold;
+	padding: 16px 0;
+}
+
+.skill-description {
+	margin: 10px;
+}
+
+.header-icon {
+	height: 20px;
+	width: 20px;
+	vertical-align: middle;
+}
+
+.info-icon {
+	background: url(#{$info-icon}) no-repeat;
+}
+
+.overview-icon {
+	background: url(#{$overview-icon}) no-repeat;
+}
+
+.appearance-icon {
+	background: url(#{$appearance-icon}) no-repeat;
+	background-position: center -17px;
+}
+
+.history-icon {
+	background: url(#{$history-icon}) no-repeat;
+}
+
+.skills-icon {
+	background: url(#{$skills-icon}) no-repeat;
+}
+
+.concept-icon {
+	background: url(#{$concept-icon}) no-repeat;
+	background-position: center -17px;
+}
+
+.trivia-icon {
+	background: url(#{$trivia-icon}) no-repeat;
+}

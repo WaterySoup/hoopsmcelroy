@@ -1,2 +1,7 @@
 dist/
 node_modules/
+src/*
+!src/default.html
+!src/example
+profiles/*
+!profiles/example

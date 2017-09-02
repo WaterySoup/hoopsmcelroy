@@ -1,0 +1,78 @@
+<div class="profile bg-visual" style="background-image: url(<%= data.bg %>);">
+	<div class="d-flex">
+		<div class="rounded-top panel info col">
+			<div class="panel-header rounded-top">
+				<div class="header-icon info-icon d-inline-block"></div> Info
+			</div>
+			<hr/>
+			<table>
+				<tbody>
+					<% var infoOrder = [
+				  {'id': 'aliases', 'name': 'Alias(es)'},
+					{'id': 'age', 'name': 'Age'},
+					{'id': 'gender', 'name': 'Gender'},
+					{'id': 'height', 'name': 'Height'},
+					{'id': 'weight', 'name': 'Weight'},
+					{'id': 'birthday', 'name': 'Birthday'},
+					{'id': 'species', 'name': 'Species'},
+					{'id': 'occupation', 'name': 'Occupation'},
+					{'id': 'nationality', 'name': 'Nationality'},
+					{'id': 'languages', 'name': 'Languages'},
+					{'id': 'voice', 'name': 'Voice Type'},
+					{'id': 'orientation', 'name': 'Orientation'},
+					{'id': 'relationship', 'name': 'Relationship Status'}
+					]; %>
+					<% for (var i = 0; i < infoOrder.length; i++) { %>
+					<tr>
+						<td>
+							<span><span><strong><%- infoOrder[i].name %></strong><br></span></span>
+						</td>
+						<td>
+							<span><span><%- data.info[infoOrder[i].id] || 'Unknown' %><br></span></span>
+						</td>
+					</tr>
+					<% } %>
+				</tbody>
+			</table>
+		</div>
+		<% if (typeof data.overview !== 'undefined') { %>
+		<div class="rounded-top panel col-6 overview">
+			<div class="panel-header rounded-top">
+				<div class="header-icon overview-icon d-inline-block"></div> Overview
+			</div>
+			<hr/>
+			<div class="panel-content">
+				<%- data.overview %>
+			</div>
+		</div>
+		<% } %>
+	</div>
+	<% var panelOrder = [
+				{'id': 'appearance', 'name': 'Appearance Notes'},
+				{'id': 'history', 'name': 'History'},
+				{'id': 'skills', 'name': 'Skills & Abilities'},
+				{'id': 'concept', 'name': 'Creation & Conception'},
+				{'id': 'trivia', 'name': 'Trivia'}
+				]; %>
+				<% for (var j = 0; j < panelOrder.length; j++) { %>
+				<% if (typeof data[panelOrder[j].id] !== 'undefined') { %>
+				<div class="rounded-top panel <%= panelOrder[j].id %>">
+					<div class="panel-header rounded-top">
+						<div class="header-icon <%= panelOrder[j].id %>-icon d-inline-block"></div> <%= panelOrder[j].name %>
+					</div>
+					<hr/>
+					<div class="panel-content">
+						<% if (panelOrder[j].id !== 'skills') { %>
+						<%- data[panelOrder[j].id] %>
+						<% } else { %>
+						<% for(var k = 0; k < data.skills.length; k++) { %>
+						<div class="skill-title"><%= data.skills[k].title %></div>
+						<hr/>
+						<div class="skill-description"><%- data.skills[k].description %></div>
+						<% } %>
+						<% } %>
+					</div>
+				</div>
+				<% } %>
+				<% } %>
+</div>
