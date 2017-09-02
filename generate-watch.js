@@ -23,7 +23,7 @@ var filterProfiles = function(file, stat) {
 	return mime.lookup(file) === 'application/json';
 };
 
-new Generate(template);
+new Generate(template, profile);
 
 var logString = 'Watching ' + template;
 if (profile) {
@@ -47,10 +47,10 @@ watch.watchTree(profileDir, {filter: filterProfiles}, function(f, curr, prev) {
 	if (typeof f == 'object' && prev === null && curr === null) {
 	
 	} else {
-		console.info('profile changed');
 		var parts = path.basename(f).split('.json');
 		var profileName = parts[parts.length - 2];
 		if (profile && profile === profileName || !profile) {
+			console.info('profile changed');
 			new Generate(template, profileName);
 		}
 	}

@@ -30,6 +30,7 @@ Manages character profile content for HTML users
 - This will generate the HTML template for all the profiles belonging to that template by compiling your SASS stylesheets into plain CSS, and then converting those styles into inline style attributes and filling in all the data from your profiles.
 - Generated files are found under `dist/{template}`.
 - A local preview is also generated for your profiles to check that everything looks relatively okay before you paste it into Toyhou.se. You can find the preview in the `view` folder of the generated template folder.
+- You can now run a watcher so that you don't have to keep calling the generate command. Run the watcher with `npm run generate:watch {template} {profile}`. {profile} is optional.
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
