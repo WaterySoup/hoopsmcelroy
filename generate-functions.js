@@ -60,7 +60,7 @@ generate.compileSass = function() {
 // Prepare template for profile generation
 generate.prepareTemplate = function(css) {
 	var srcTemplate = fs.readFileSync(path.join(this.srcDir, 'index.html'), 'utf8');
-	fs.writeFile(path.join(this.distDir, 'main.css'), css);
+	fs.writeFile(path.join(this.distDir, 'main.css'), css, this.fsCallback);
 
 	var profiles = fs.readdirSync(this.profilesDir);
 
@@ -88,22 +88,26 @@ generate.generateProfile = function(profileData, srcTemplate, css) {
 	// Unfortunately, some classes may not actually be available until after the HTML templates have been processed with EJS, so we delay converting CSS until the end.
 	convertedHtml = juice(generatedHtml);
 
-	fs.writeFileSync(path.join(this.distDir, profileName + '.html'), convertedHtml);
-	fs.writeFileSync(path.join(this.distDir, profileName + '-css.html'), html);
+	var promises = [];
+	promises.push(fs.writeFile(path.join(this.distDir, profileName + '.html'), convertedHtml, this.fsCallback));
+	promises.push(fs.writeFile(path.join(this.distDir, profileName + '-css.html'), html, this.fsCallback));
 	// Put generated HTML into a view.
 	var viewHtml = ejs.render(defaultTpl, {html: convertedHtml, withCss: false});
 	var viewCssHtml = ejs.render(defaultTpl, {html: html, withCss: true});
-	fs.writeFileSync(path.join(this.viewDir, profileName + '-css.html'), viewCssHtml);
-	fs.writeFile(path.join(this.viewDir, profileName + '.html'), viewHtml, this.done.bind(this, profileName));
+	promises.push(fs.writeFile(path.join(this.viewDir, profileName + '-css.html'), viewCssHtml, this.fsCallback));
+	promises.push(fs.writeFile(path.join(this.viewDir, profileName + '.html'), viewHtml, this.fsCallback));
+	Promise.all(promises).then(this.done.bind(this, profileName));
+};
+
+generate.fsCallback = function(err) {
+	if (err) {
+		console.info('Error writing file', err);
+	}
 };
 
 // Output results to console.
-generate.done = function(profileName, err) {
-	if (err) {
-		console.info(err);
-	} else {
-		console.info(this.template + ' for ' + profileName + ' generated successfully.');
-	}
+generate.done = function(profileName) {
+	console.info(this.template + ' for ' + profileName + ' generated successfully.');
 };
 
 module.exports = Generate;

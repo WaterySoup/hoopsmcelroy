@@ -1,6 +1,6 @@
 {
   "name": "th-html-manager",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Manages toyhou.se HTML character profiles by automating the styling process.",
   "main": "generate.js",
   "scripts": {
