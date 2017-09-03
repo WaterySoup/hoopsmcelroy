@@ -60,36 +60,40 @@ generate.compileSass = function() {
 // Prepare template for profile generation
 generate.prepareTemplate = function(css) {
 	var srcTemplate = fs.readFileSync(path.join(this.srcDir, 'index.html'), 'utf8');
-	var html = '<style>' + css + '</style>' + srcTemplate;
+	fs.writeFile(path.join(this.distDir, 'main.css'), css);
 
 	var profiles = fs.readdirSync(this.profilesDir);
 
 	var size = profiles.length;
 
 	if (this.profile) {
-		this.generateProfile(this.profile + '.json', html);
+		this.generateProfile(this.profile + '.json', srcTemplate, css);
 	} else {
 		for (var i = 0; i < size; i++) {
 			if (mime.lookup(profiles[i]) === 'application/json') {
-				this.generateProfile(profiles[i], html);
+				this.generateProfile(profiles[i], srcTemplate, css);
 			}
 		}
 	}
 };
 
 // Generate a profile with html with inline styles and convert CSS to inline styles.
-generate.generateProfile = function(profileData, html) {
+generate.generateProfile = function(profileData, srcTemplate, css) {
 	var profileNameParts = profileData.split('.json');
 	var profileName = profileNameParts[profileNameParts.length - 2];
 	// Require doesn't work well with watch as it uses the original JSON files for the entire time the script is live and doesn't detect changes to the required file.
 	var profile = JSON.parse(fs.readFileSync(path.join(this.profilesDir, profileData), 'utf8'));
-	var generatedHtml = ejs.render(html, profile);
-	// Unfortunately, some classes may not actually be available until after the HTML templates have bee processed with EJS, so we delay converting CSS until the end.
+	var html = ejs.render(srcTemplate, profile);
+	var generatedHtml = '<style>' + css + '</style>' + html;
+	// Unfortunately, some classes may not actually be available until after the HTML templates have been processed with EJS, so we delay converting CSS until the end.
 	convertedHtml = juice(generatedHtml);
 
 	fs.writeFileSync(path.join(this.distDir, profileName + '.html'), convertedHtml);
+	fs.writeFileSync(path.join(this.distDir, profileName + '-css.html'), html);
 	// Put generated HTML into a view.
-	var viewHtml = ejs.render(defaultTpl, {html: convertedHtml});
+	var viewHtml = ejs.render(defaultTpl, {html: convertedHtml, withCss: false});
+	var viewCssHtml = ejs.render(defaultTpl, {html: html, withCss: true});
+	fs.writeFileSync(path.join(this.viewDir, profileName + '-css.html'), viewCssHtml);
 	fs.writeFile(path.join(this.viewDir, profileName + '.html'), viewHtml, this.done.bind(this, profileName));
 };
 
