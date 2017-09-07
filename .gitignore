@@ -1,7 +1,11 @@
-dist/
+dist/*
+!dist/dnd
 node_modules/
 src/*
 !src/default.html
 !src/example
+!src/dnd
 profiles/*
 !profiles/example
+!profiles/dnd
+.*
