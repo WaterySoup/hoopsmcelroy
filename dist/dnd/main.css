@@ -1,0 +1,126 @@
+.wrapper {
+  background-color: #AFA6A5;
+  color: #231212; }
+
+table {
+  border: 0; }
+  table.attacks tr, table.attacks td, table.attacks .value {
+    height: 100%; }
+  table.attacks td {
+    padding: 3px; }
+    table.attacks td.right {
+      padding-right: 0; }
+    table.attacks td.left {
+      padding-left: 0; }
+    table.attacks td.last {
+      padding-bottom: 10px; }
+
+ul {
+  padding: 0;
+  padding-left: 20px; }
+
+li {
+  list-style-type: circle; }
+  li .title {
+    margin-left: 5px; }
+
+hr {
+  margin: 0;
+  border: 0;
+  background-color: #AFA6A5;
+  height: 1px; }
+
+.wrapper {
+  font-family: Book Antiqua, Palatino; }
+
+.framed-container {
+  padding: 5px; }
+  .framed-container .content {
+    background-color: #F9F4F2; }
+
+.frame-row {
+  padding: 0; }
+
+.edge-l, .edge-r {
+  background-image: url(http://file.toyhou.se/images/4737211_uYlJwEN5vcH6ypX.png?1504820031);
+  background-repeat: repeat-y;
+  width: 4px; }
+
+.edge-r {
+  background-position: -4px 0; }
+
+.edge-t, .edge-b {
+  background-color: #F9F4F2; }
+  .edge-t .border, .edge-b .border {
+    background-color: #231212;
+    height: 2px; }
+
+.edge-b {
+  padding-top: 7px; }
+
+[class^=corner-] {
+  background-image: url(http://file.toyhou.se/images/4736857_j15UGrO05APc03X.png?1504820005);
+  background-repeat: no-repeat;
+  width: 9px;
+  height: 9px; }
+
+.corner-tr {
+  background-position: -9px 0; }
+
+.corner-bl {
+  background-position: 0 -9px; }
+
+.corner-br {
+  background-position: -9px -9px; }
+
+.label-xxs {
+  font-size: 10px; }
+
+.label-xs, .info-title {
+  font-size: 11px; }
+
+.label-xl {
+  font-size: 24px; }
+
+.value-title, .value-content {
+  text-align: center; }
+
+.value-title, .info-title {
+  text-transform: uppercase; }
+
+.value-title {
+  font-weight: bold; }
+
+.value {
+  background-color: #AFA6A5;
+  padding: 3px; }
+
+.dice-item, .die {
+  margin: 5px;
+  text-transform: uppercase; }
+  .dice-item .label-xxs, .die .label-xxs {
+    color: #AFA6A5; }
+
+.header .name {
+  margin: 0 10px; }
+
+.skills li, .throws li {
+  margin: 5px 0; }
+
+.senses-title {
+  border: 1px solid #231212;
+  margin: 0 5px 10px; }
+  .senses-title .score {
+    font-size: 18px; }
+  .senses-title .title {
+    text-transform: uppercase;
+    text-align: center; }
+
+.score-padding {
+  padding: 0 10px; }
+
+.list-padding {
+  padding: 0 5px; }
+
+.senses-description {
+  margin: 5px; }
