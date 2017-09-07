@@ -1,0 +1,32 @@
+<% var infoOrder = [
+{"id": "race", "title": "Race"},
+{"id": "size", "title": "Size"},
+{"id": "height", "title": "Height"},
+{"id": "weight", "title": "Weight"},
+{"id": "type", "title": "Type"},
+{"id": "age", "title": "Age"},
+{"id": "gender", "title": "Gender"},
+{"id": "alignment", "title": "Alignment"}
+] %>
+<% var i = 0; %>
+<% var size = 4; %>
+<% for (var j = 0; j < 2; j++) { %>
+	<div class="info-row d-flex flex-row"<% if (j === 0) { %> style="padding-bottom: 10px;"<% } %>>
+		<% for (i; i < size; i++) { %>
+			<div class="info-item media-body">
+				<div class="info-value">
+				
+				
+				<!-- <%= infoOrder[i].title %> -->
+				<%= content[infoOrder[i].id] %>
+				
+				
+				</div>
+				<hr/>
+				<div class="info-title"><%= infoOrder[i].title %></div>
+				</div>
+				<% } %>
+				<% i = 4; %>
+				<% size = 8; %>
+				</div>
+				<% } %>

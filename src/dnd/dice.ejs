@@ -1,0 +1,36 @@
+<div class="d-flex flex-row">
+	<div class="dice-item">
+		<div class="label-xxs">Level</div>
+		<div class="value rounded">
+		
+
+		<!-- Hit Dice Level -->
+		<%= content.lvl %>
+		
+		
+		</div>
+	</div>
+	<div class="dice-item">
+		<div class="label-xxs">Used</div>
+		<div class="value rounded">
+		
+		
+		<!-- Hit Dice Used -->
+		<%= content.used || 'N/A' %>
+		
+		
+		</div>
+	</div>
+</div>
+<div class="d-flex flex-column die">
+	<div class="label-xxs">Die</div>
+	<div class="value rounded">
+	
+	
+	<!-- Die -->
+	<%= content.die %>
+	
+	
+	</div>
+</div>
+<div class="label-xs value-title">Hit Dice</div>

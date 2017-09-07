@@ -1,0 +1,115 @@
+{
+ "data": {
+ 	"name": "Character Name",
+	"info": {
+		"race": "Pseudodragon",
+		"size": "Tiny",
+		"height": "height",
+		"weight": "weight",
+		"type": "Dragon",
+		"age": "age",
+		"gender": "gender",
+		"alignment": "Neutral Good"
+	},
+	"stats": {
+		"str": "6",
+		"dex": "15",
+		"con": "13",
+		"int": "10",
+		"wis": "12",
+		"cha": "10"
+	},
+	"throws": {
+		"str": "-2",
+		"dex": "+2",
+		"con": "+1",
+		"int": "0",
+		"wis": "+1",
+		"cha": "0"
+	},
+	"overview": {
+		"init": "+2",
+		"speed": "15ft, fly 60 ft.",
+		"hit": {
+			"lvl": "2",
+			"used": "",
+			"die": "d4 + 1"
+		},
+		"atk": "1"
+	},
+	"skills": {
+		"acrobatics": "+2",
+		"animals": "+1",
+		"arcana": "0",
+		"athletics": "-2",
+		"deception": "0",
+		"history": "0",
+		"insight": "+1",
+		"intimidation": "0",
+		"investigation": "0",
+		"medicine": "+1",
+		"nature": "0",
+		"perception": "+3",
+		"performance": "0",
+		"religion": "0",
+		"sleight": "+2",
+		"stealth": "+4",
+		"survival": "+1"
+	},
+	"points": {
+		"armor": "13",
+		"proficiency": "+2",
+		"maxhp": "7",
+		"hp": "",
+		"death": ""
+	},
+	"attacks": [
+		{"name": "Bite",
+		 "ability": "Dex",
+		 "range": "Melee (5ft)",
+		 "hit": "+4",
+		 "damage": "1d4 + 2",
+		 "type": "Piercing",
+		 "description": ""
+		},
+		{"name": "Sting",
+		 "ability": "Dex",
+		 "range": "Melee (5ft)",
+		 "hit": "+4",
+		 "damage": "1d4 + 2",
+		 "type": "Piercing",
+		 "description": "DC 11 Con save or poisoned 1 hour; fail by 5 or more; unconscious 1 hour, until damaged or awakened."
+		}
+	],
+	"features": [
+		{
+		 "title": "Languages",
+		 "description": "Understands Common and Draconic but can't speak."
+		},
+		{
+			"title": "Pact of the Chain",
+			"description": "If dropped to 0 HP, the familiar disappears, leaving behind no physical form. It must obey all commands of the master."
+		}
+	],
+	"traits": [
+		{
+			"title": "Keen Senses",
+			"description": "The pseudodragon has advantage on Wisdom (Perception) checks that rely on sight, hearing or smell."
+		},
+		{
+			"title": "Magic Resistance",
+			"description": "The pseudodragon has advantage saving throws against spells and other magical effects."
+		},
+		{
+			"title": "Limited Telepathy",
+			"description": "The pseudodragon can magically communicate simple ideas, emotions and images telepathically with any creature within 100ft. of it that can understand a language."
+		}
+	],
+	"notes": "Blah blah blah, notes.",
+	"senses": {
+		"title": "Passive Wisdom (Perception)",
+		"value": "13",
+		"description": "Blindsight 10 ft; Darkvision 60ft; Adv. on Wis (Perception) checks using hearing/sight/smell"
+	}
+ }
+}

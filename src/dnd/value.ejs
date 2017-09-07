@@ -1,0 +1,20 @@
+<% var isTop = false; %>
+<% if (typeof position === 'undefined' || position === 'top') { %>
+	<% isTop = true; %>
+		<div class="label-xs value-title media-body">
+		<%= content[0] %>
+		</div>
+		<% } %>
+		<div class="label-xl value-content<% if (!isTop) { %> media-body<% } %>">
+
+
+		<!-- <%= content[0] %> Value -->
+		<%= content[1] %>
+
+
+		</div>
+		<% if (typeof position !== 'undefined' && position === 'bottom') { %>
+			<div class="label-xs value-title">
+				<%= content[0] %>
+				</div>
+				<% } %>

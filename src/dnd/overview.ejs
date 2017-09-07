@@ -1,0 +1,10 @@
+<div>
+<div class="d-flex flex-row">
+<%- include('frame', {type: 'value', position: 'bottom', content: ['Initiative', content.init], className: 'media-body'}); %>
+<%- include('frame', {type: 'value', position: 'bottom', content: ['Speed', content.speed], className: 'media-body'}); %>
+</div>
+<div class="d-flex flex-row">
+<%- include('frame', {type: 'dice', content: content.hit, className: 'media-body'}); %>
+<%- include('frame', {type: 'value', position: 'bottom', content: ['Attacks per Action', content.atk], className: 'media-body'}); %>
+</div>
+</div>

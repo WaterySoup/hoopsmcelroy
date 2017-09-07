@@ -1,0 +1,25 @@
+<% var throwsOrder = ['str', 'dex', 'con', 'int', 'wis', 'cha']; %>
+
+<% var i = 0; %>
+<% var size = throwsOrder.length / 2; %>
+<div class="d-flex flex-row">
+<% for (var j = 0; j < 2; j++) { %>
+	<ul class="media-body throws">
+		<% for (i; i < size; i++) { %>
+			<li>
+				<span class="value rounded">
+				
+				
+				<!-- <%= throwsOrder[i] %> Throw Value -->
+				<%= content[throwsOrder[i]] %>
+				
+				
+				</span><span class="title"><%= throwsOrder[i] %></span>
+				</li> 
+				<% } %>
+				<% i = throwsOrder.length / 2; %>
+				<% size = throwsOrder.length; %>
+				</ul>
+				<% } %>
+				</div>
+				<div class="value-title label-xs">Saving Throws</div>

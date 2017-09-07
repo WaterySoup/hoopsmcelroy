@@ -1,0 +1,92 @@
+<div class="d-flex flex-column">
+<table class="col attacks">
+<% var unknown = 'N/A'; %>
+<% for(var i = 0; i < content.length; i++) { %>
+	<tr>
+		<td class="label-xxs">Attack Name</td>
+		<td class="label-xxs">Prof Ability</td>
+		<td class="label-xxs">Range</td>
+		<td class="label-xxs">To Hit</td>
+		<td class="label-xxs">Damage</td>
+		<td class="label-xxs">Damage Type</td>
+		</tr>
+		<tr>
+		<td class="right">
+		<div class="value rounded-left">
+
+
+		<!-- Attack Name -->
+		<%= content[i].name || unknown %>
+
+
+		</div>
+		</td>
+		<td class="left">
+		<div class="value rounded-right">
+
+
+		<!-- Prof Ability -->
+		<%= content[i].ability || unknown %>
+		
+
+		</div>
+		</td>
+		<td>
+		<div class="value rounded">
+
+
+		<!-- Range -->
+		<%= content[i].range || unkonwn %>
+
+
+		</div>
+		</td>
+		<td>
+		<div class="value rounded">
+
+
+		<!-- To Hit -->
+		<%= content[i].hit || unknown %>
+
+
+		</div>
+		</td>
+		<td>
+		<div class="value rounded">
+
+
+		<!-- Damage -->
+		<%= content[i].damage || unknown %>
+
+
+		</td>
+		<td>
+		<div class="value rounded">
+
+
+		<!-- Damage Type -->
+		<%= content[i].type || unknown %>
+
+
+		</div>
+		</td>
+		</tr>
+		<tr>
+		<td colspan="6">
+		<div class="value rounded">
+
+		
+		<!-- Description -->
+		<%= content[i].description || unknown %>
+
+
+		</div>
+		</td>
+		</tr>
+		<tr>
+		<td colspan="6" class="label-xxs last">Description</td>
+		</tr>
+		<% } %>
+		</table>
+		<div class="label-xs value-title">Attacks</div>
+		</div>

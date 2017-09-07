@@ -1,0 +1,22 @@
+<div class="framed-container d-flex flex-column<% if (typeof className !== 'undefined') { %> <%= className %><% } %>">
+	<div class="frame-row d-flex">
+		<div class="corner-tl d-inline-block"></div><div class="edge-t d-inline-block media-body"><div class="border"></div></div><div class="corner-tr d-inline-block"></div>
+	</div>
+	<div class="frame-row d-flex media-body">
+		<div class="edge-l d-inline-block"></div><div class="content d-inline-block media-body<% if (typeof contentClass !== 'undefined') { %> <%= contentClass %><% } %><% if (type && (type === 'list' || type === 'value')) { %> d-flex flex-column<% } %>">
+		<% if (type) { %>
+			<%- include(type, {content}); %>
+		<% } else { %>
+			<% hasComment = false; if (typeof comment !== 'undefined') { hasComment = true; %>
+
+
+			<!-- <%= comment %> --><% } %>
+			<%- content %><% if (hasComment) { %>
+
+
+<% }} %></div><div class="edge-r d-inline-block"></div>
+	</div>
+	<div class="frame-row d-flex">
+		<div class="corner-bl d-inline-block"></div><div class="edge-b d-inline-block media-body"><div class="border"></div></div><div class="corner-br d-inline-block"></div>
+	</div>
+</div>

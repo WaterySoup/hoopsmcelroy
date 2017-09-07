@@ -1,0 +1,24 @@
+<% if (typeof content === 'string') { %>
+	<div class="media-body list-padding">
+
+
+		<!-- <%= title %> Content -->
+		<%- content %>
+
+
+	</div>
+<% } else { %>
+
+
+<!-- <%= title %> Content -->
+<ul class="media-body">
+	<% for(var i = 0; i < content.length; i++) { %>
+		<li>
+			<b><%= content[i].title %></b>: <%- content[i].description %>
+		</li>
+	<% } %>
+</ul>
+
+
+<% } %>
+<div class="label-xs value-title"><%= title %></div>

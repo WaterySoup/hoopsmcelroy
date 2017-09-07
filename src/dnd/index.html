@@ -1,0 +1,49 @@
+<div class="wrapper">
+	<div class="header d-flex flex-row align-items-center">
+	<div class="name">
+		<h2>
+
+			<!-- Character Name -->
+			<%= data.name %>
+
+
+		</h2>
+	</div><%- include('frame', {type: 'info', content: data.info, className: 'col'}); %>
+	</div>
+	<div class="sheet-container d-flex flex-column">
+		<div class="stats-row d-flex flex-row">
+			<div class="stats-col-1 d-flex flex-column">
+				<% var statsOrder = [
+					{id: 'str', title: 'Strength'},
+					{id: 'dex', title: 'Dexterity'},
+					{id: 'con', title: 'Constitution'},
+					{id: 'int', title: 'Intelligence'},
+					{id: 'wis', title: 'Wisdom'},
+					{id: 'cha', title: 'Charisma'}
+				] %>
+				<% for (var i = 0; i < statsOrder.length; i++) { %>
+				<%- include('frame', {type: 'value', content: [statsOrder[i].title, data.stats[statsOrder[i].id]]}); %>
+				<% } %>
+			</div>
+			<div class="stats-col-2 d-flex flex-column">
+				<%- include('frame', {type: 'throws', content: data.throws}); %>
+				<%- include('overview', {content: data.overview}); %>
+				<%- include('frame', {type: 'skills', content: data.skills, contentClass: 'justify-content-center align-items-center d-flex'}); %>
+			</div>
+			<div class="stats-col-3 d-flex flex-column col">
+				<%- include('points', {content: data.points}); %>
+				<%- include('frame', {type: 'attacks', content: data.attacks}); %>
+				<div class="d-flex flex-row">
+					<%- include('frame', {type: 'list', content: data.features, title: 'Features'}); %>
+					<%- include('frame', {type: 'list', content: data.traits, title: 'Traits'}); %>
+				</div>
+			</div>
+		</div>
+		<div class="other-col">
+			<div class="d-flex flex-row">
+				<%- include('frame', {type: 'senses', content: data.senses, className: 'col-5'}); %>
+				<%- include('frame', {type: 'list', content: data.notes, title: 'Notes', className: 'media-body'}); %>
+			</div>
+		</div>
+	</div>
+</div>
