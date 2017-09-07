@@ -83,7 +83,7 @@ generate.generateProfile = function(profileData, srcTemplate, css) {
 	var profileName = profileNameParts[profileNameParts.length - 2];
 	// Require doesn't work well with watch as it uses the original JSON files for the entire time the script is live and doesn't detect changes to the required file.
 	var profile = JSON.parse(fs.readFileSync(path.join(this.profilesDir, profileData), 'utf8'));
-	var html = ejs.render(srcTemplate, profile);
+	var html = ejs.render(srcTemplate, profile, {filename: path.join(this.srcDir, 'index.html')});
 	var generatedHtml = '<style>' + css + '</style>' + html;
 	// Unfortunately, some classes may not actually be available until after the HTML templates have been processed with EJS, so we delay converting CSS until the end.
 	convertedHtml = juice(generatedHtml);

@@ -15,7 +15,7 @@ var profileDir = path.join(__dirname, 'profiles', template);
 // We don't need to watch every file that has no effect on generation, so ignore everything that isn't an HTML file or SASS.
 var filterTemplates = function(file, stat) {
 	var filetype = mime.lookup(file);
-	return filetype === 'text/x-sass' || filetype === 'text/x-scss' || filetype === 'text/html' || stat.isDirectory();
+	return filetype === 'text/x-sass' || filetype === 'text/x-scss' || filetype === 'text/html' || path.extname(file) === '.ejs' || stat.isDirectory();
 };
 
 // Only .json files are valid profiles.
